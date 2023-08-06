@@ -1,0 +1,16 @@
+
+Database Name: simpleave
+
+**Admin Login Details**
+Email   : admin@gmail.com
+Password: Password@123
+
+**Employee Login**
+
+Email   : shubham@gmail.com
+Password: shubham@321
+
+
+
+
+
