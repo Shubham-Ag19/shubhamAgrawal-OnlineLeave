@@ -30,7 +30,7 @@
 		</div>
 	
 	</section>
-	<!-- Designed and developed by Habibur Rahman Mahid -->
+	
 	<!----Section2 for showing Post Model ---->
 	<section id="post">
 		<div class="container">
@@ -79,7 +79,6 @@
 
 </body>
 </html>
-<!-- Designed and developed by Habibur Rahman Mahid -->
 <?php 
 	
 	if(isset($_POST['submit'])){
@@ -100,6 +99,7 @@
 		if($check == 1){
 			session_start();
 			$_SESSION['email'] = $user;
+			
 			
 			echo "<script> 
 					window.open('dashboard.php','_self');

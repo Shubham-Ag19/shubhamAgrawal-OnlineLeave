@@ -8,10 +8,9 @@
 	else{
 		header('location:index.php');
 	}
-
+	
 ?>
 <body>
-	<!-- Designed and developed by Habibur Rahman Mahid -->
 	<nav class="navbar navbar-toggleable-sm navbar-inverse bg-inverse p-0">
 		<div class="container">
 			<button class="navbar-toggler toggler-right" data-target="#mynavbar" data-toggle="collapse">
@@ -35,7 +34,6 @@
 		</div>
 	</nav>
 	<!--This Is Header-->
-	<!-- Designed and developed by Habibur Rahman Mahid -->
 	<header id="main-header" class="bg-primary py-2 text-white">
 		<div class="container">
 			<div class="row">
@@ -46,7 +44,6 @@
 		</div>
 	</header>
 	<!--This is section-->
-	<!-- Designed and developed by Habibur Rahman Mahid -->
 	<section id="sections" class="py-4 mb-4 bg-faded">
 		<div class="container">
 			<div class="row">
@@ -66,13 +63,12 @@
 	
 	</section>
 	<!----Section2 for showing Post Model ---->
-	<!-- Designed and developed by Habibur Rahman Mahid -->
 	<section id="post">
 		<div class="container">
 			<div class="row">
 			<table class="table table-bordered table-hover table-striped">
 							<thead>
-								<th>#</th>
+								<th>S.N.</th>
 								<th>Name</th>
 								<th>Department</th>
 								<th>Leave Date</th>
@@ -135,22 +131,30 @@
 					</div>
 					<button class="close" data-dismiss="modal"><span>&times;</span></button>
 				</div>
+
 				<div class="modal-body">
 					<form action="" method="post">
 						<div class="form-group">
 							<label class="form-control-label">Name</label>
-							<input type="text" name="name" class="form-control"/>
+							<input type="text" name="name" value="<?php
+							$sql = "SELECT * FROM users WHERE email='".$_SESSION['email']."'";
+							$que = mysqli_query($con,$sql);
+							while ($result = mysqli_fetch_assoc($que)) {
+								echo $result['name'];
+							}?>" class="form-control" readonly/>
+
+
 							<input type="hidden" name="email" value="<?php echo $_SESSION['email']?>">
 							<label class="form-control-label">Department</label>
-							<select name="department" class="form-control" >
-								<option value="HR">HR</option>
-								<option value="Marketing">Marketing</option>
-								<option value="Development">Development</option>
-								<option value="UX">UX</option>
-								<option value="Test Team">Test Team</option>
-								<option value="Finance">Finance</option>
-								<option value="Customer Support">Customer Support</option>
-							</select>
+							<input type="text" name="department" value="<?php
+							$sql = "SELECT * FROM users WHERE email='".$_SESSION['email']."'";
+							$que = mysqli_query($con,$sql);
+							while ($result = mysqli_fetch_assoc($que)) {
+								echo $result['department'];
+							}
+
+							
+							?>" class="form-control" readonly/>
 						</div>
 						
 						<div class="form-group">
@@ -184,7 +188,7 @@
 				<div class="modal-body">
 				<table class="table table-bordered table-hover table-striped">
 							<thead>
-								<th>#</th>
+								<th>S.N....</th>
 								<th>Name</th>
 								<th>Department</th>
 								<th>Leave Date</th>
@@ -240,7 +244,7 @@
 				<div class="modal-body">
 				<table class="table table-bordered table-hover table-striped">
 							<thead>
-								<th>#</th>
+								<th>S.N.</th>
 								<th>Name</th>
 								<th>Department</th>
 								<th>Leave Date</th>
@@ -254,7 +258,7 @@
 									$cnt=1;
 									while ($result = mysqli_fetch_assoc($que)) {
 									?>
-
+									
 									
 							 	<tr>
 									<td><?php echo $cnt;?></td>
@@ -302,12 +306,16 @@
 		$editor1 = $_POST['editor1'];
 		$status = $_POST['status'];
 
-		$sql = "INSERT INTO leaves(name,email,department,leavedate,leavereason,status)VALUES($result['name'],'$email','$department','$leavedate','$editor1','$status')";
+		$sql = "INSERT INTO leaves(name,email,department,leavedate,leavereason,status)VALUES('$name','$email','$department','$leavedate','$editor1','$status')";
 
 		$run = mysqli_query($con,$sql);
 
+		session_start();
+		$_SESSION['name'] = $username;
+
+
 		if($run == true){
-			
+			 
 			echo "<script> 
 					alert('Leave Requested, Please wait for approval status');
 					window.open('dashboard.php','_self');
