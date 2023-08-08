@@ -385,7 +385,10 @@
 							 		<td><?php echo $result['name']; ?></td>
 							 		<td><?php echo $result['department']; ?></td>
 							 		<td><?php echo $result['email']; ?></td>
-									 <td><a href="deletemp.php?id=<?php echo $result["id"]; ?>"><button type="button" class="btn btn-danger" style="border-radius:0%;">Delete</button></a> </td>
+									
+
+									 
+									<td><a href="deletemp.php?id=<?php echo $result["id"]; ?>"><button type="button" class="btn btn-danger" style="border-radius:0%;">Delete</button></a> </td>
 							 	</tr>
 
 							 </tbody>
